@@ -1,14 +1,26 @@
-export const images = {
-    // logo1: require('../../assets/images/logo1.png'),
-    // logo2: require('../../assets/images/logo2.png'),
-    // avatar_null: require('../../assets/images/avatar_null.png'),
-    // cccd: require('../../assets/images/cccd.png'),
-    // bill: require('../../assets/images/bill.png'),
-    // contract: require('../../assets/images/contract.png'),
-    // onboarding1: require('../../assets/images/onboarding1.png'),
-    // onboarding2: require('../../assets/images/onboarding2.png'),
-    // onboarding3: require('../../assets/images/onboarding3.png'),
+// Import tất cả images
+import eldenImage from '../assets/images/elden.jpg';
+import skyImage from '../assets/images/sky.png';
 
+// Parallax images
+import bgGreen from '../assets/images/parallax/bg_green.jpg';
+import bgGreen1 from '../assets/images/parallax/bg_green1.jpg';
+import catGreen from '../assets/images/parallax/cat_green.png';
+import textGreend from '../assets/images/parallax/text_greend.png';
+
+// Mapping object để map tên image -> path image
+export const imageMap: Record<string, string> = {
+    elden: eldenImage,
+    sky: skyImage,
+    // Parallax
+    bgGreen: bgGreen,
+    bgGreen1: bgGreen1,
+    catGreen: catGreen,
+    textGreend: textGreend,
+} as const;
+
+export const images = {
+    // Có thể thêm các images khác nếu cần
 } as const;
 
 export type Images = typeof images;

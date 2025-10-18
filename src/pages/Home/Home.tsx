@@ -23,6 +23,7 @@ import {
 import { coreTechs, beAndDatabases, tools } from './initData';
 import type { Tech } from './initData';
 import { university } from './text';
+import { iconMap } from '../../constants/icons';
 import { useNavigate } from 'react-router-dom';
 import PlaySong from '../../components/PlaySong/PlaySong';
 import { useBreakpoints } from '../../utilities/breakpoint';
@@ -46,6 +47,15 @@ function Home() {
   const [showContent, setShowContent] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const timerRef = useRef<number | null>(null);
+
+  // Helper function để render icon từ iconName
+  const renderIcon = (iconName: string, altText: string) => {
+    const iconSrc = iconMap[iconName];
+    if (!iconSrc) {
+      return <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />;
+    }
+    return <img src={iconSrc} alt={altText} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />;
+  };
 
   const [showLines, setShowLines] = useState<ShowLines>({
     line1: false,
@@ -114,8 +124,8 @@ function Home() {
   // }
 
   return (
-    <Layout style={{ 
-      color: "white", 
+    <Layout style={{
+      color: "white",
       overflow: 'hidden',
       width: '100%',
       minHeight: '100vh',
@@ -189,38 +199,22 @@ function Home() {
                 Core Technologies
               </Title>
               <Row gutter={[24, 24]}>
-                {/* Row 1 */}
-                {dataCoreTechs?.map((item, index) => {
-                  let icon: React.ReactNode = null;
-                  //xử lý icon
-                  if (item.pathIcon) {
-                    icon = <img src={item.pathIcon} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />;
-                  }
-                  else {
-                    if (item.icon) {
-                      icon = item.icon;
-                    }
-                    else {
-                      icon = <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />;
-                    }
-                  }
-                  return (
-                    <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
-                      <Card
-                        hoverable
-                        className="card-custom"
-                      >
-                        <Flex gap={20} align="center">
-                          {icon}
-                          <Flex vertical>
-                            <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item.name}</Title>
-                            <Text style={{ color: '#999' }}>{item.experience}</Text>
-                          </Flex>
+                {dataCoreTechs?.map((item, index) => (
+                  <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
+                    <Card
+                      hoverable
+                      className="card-custom"
+                    >
+                      <Flex gap={20} align="center">
+                        {renderIcon(item.iconName, item.name)}
+                        <Flex vertical>
+                          <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item.name}</Title>
+                          <Text style={{ color: '#999' }}>{item.experience}</Text>
                         </Flex>
-                      </Card>
-                    </Col>
-                  );
-                })}
+                      </Flex>
+                    </Card>
+                  </Col>
+                ))}
               </Row>
             </Flex>
             {/* Backend & Database */}
@@ -232,39 +226,22 @@ function Home() {
                 Backend & Database
               </Title>
               <Row gutter={[24, 24]}>
-                {dataBeAndDatabases?.map((item, index) => {
-                  let icon: React.ReactNode = null;
-                  //xử lý icon
-                  if (item.pathIcon) {
-                    icon = <img src={item.pathIcon} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />;
-                  }
-                  else {
-                    if (item.icon) {
-                      icon = item.icon;
-                    }
-                    else {
-                      icon = <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />;
-                    }
-                  }
-                  return (
-                    <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
-                      <Card
-                        hoverable
-                        className="card-custom"
-                      >
-                        <Flex gap={20} align='center'>
-                          {icon}
-                          <Flex vertical>
-                            <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
-                            <Text style={{ color: '#999' }}>{item.experience}</Text>
-
-                            {/* <Text style={{ color: '#999' }}>3 months</Text> */}
-                          </Flex>
+                {dataBeAndDatabases?.map((item, index) => (
+                  <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
+                    <Card
+                      hoverable
+                      className="card-custom"
+                    >
+                      <Flex gap={20} align='center'>
+                        {renderIcon(item.iconName, item.name)}
+                        <Flex vertical>
+                          <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
+                          <Text style={{ color: '#999' }}>{item.experience}</Text>
                         </Flex>
-                      </Card>
-                    </Col>
-                  );
-                })}
+                      </Flex>
+                    </Card>
+                  </Col>
+                ))}
               </Row>
             </Flex>
             {/* Tools & DevOps */}
@@ -276,37 +253,22 @@ function Home() {
                 Tools
               </Title>
               <Row gutter={[24, 24]}>
-                {dataTools?.map((item, index) => {
-                  let icon: React.ReactNode = null;
-                  //xử lý icon
-                  if (item.pathIcon) {
-                    icon = <img src={item.pathIcon} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />;
-                  }
-                  else {
-                    if (item.icon) {
-                      icon = item.icon;
-                    }
-                    else {
-                      icon = <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />;
-                    }
-                  }
-                  return (
-                    <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
-                      <Card
-                        hoverable
-                        className="card-custom"
-                      >
-                        <Flex gap={20} align='center'>
-                          {icon}
-                          <Flex vertical>
-                            <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
-                            <Text style={{ color: '#999' }}>{item.experience}</Text>
-                          </Flex>
+                {dataTools?.map((item, index) => (
+                  <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
+                    <Card
+                      hoverable
+                      className="card-custom"
+                    >
+                      <Flex gap={20} align='center'>
+                        {renderIcon(item.iconName, item.name)}
+                        <Flex vertical>
+                          <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
+                          <Text style={{ color: '#999' }}>{item.experience}</Text>
                         </Flex>
-                      </Card>
-                    </Col>
-                  );
-                })}
+                      </Flex>
+                    </Card>
+                  </Col>
+                ))}
               </Row>
             </Flex>
 
