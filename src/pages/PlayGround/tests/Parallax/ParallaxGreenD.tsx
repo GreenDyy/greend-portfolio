@@ -2,12 +2,11 @@ import React from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { Flex } from 'antd'
 //import images
-import cat_green from '../../../assets/images/parallax/cat_green.png'
-import bg_green from '../../../assets/images/parallax/bg_green1.jpg'
+import { images } from '../../../../constants/images'
 
 const imagesForParalax = {
-    img1: bg_green,
-    img2: cat_green,
+    img1: images.bgGreen,
+    img2: images.catGreen,
 }
 
 const ParallaxFireWatch = () => {

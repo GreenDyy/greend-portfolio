@@ -1,45 +1,24 @@
-import axios from 'axios';
+import axiosInstance from '../../services/axios.config';
+import axios from 'axios'; // Chỉ dùng cho external APIs
+
+// ===== INTERNAL APIs (dùng axiosInstance với interceptor) =====
 
 export const getProfleByUsername = async (id: number) => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/test/get-profile-by-id/${id}`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    return response.data;
+    return await axiosInstance.get(`/test/get-profile-by-id/${id}`);
 }
 
 export const helloName = async (name: string) => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/test/hello-name`, {
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        params: {
-            name: name
-        }
+    return await axiosInstance.get('/test/hello-name', {
+        params: { name }
     });
-    return response.data;
 }
+
+// ===== EXTERNAL APIs (dùng axios thường) =====
 
 export const testMockData = async () => {
-    const res = await axios.get(`https://n8n.naiscorp.com/webhook-test/mock/users`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    return res;
+    return await axios.get('https://n8n.naiscorp.com/webhook-test/mock/users');
 }
 
-
 export const testMockDataPostMethod = async (data: any) => {
-    const res = await axios.post(
-        `https://n8n.naiscorp.com/webhook-test/mock/text`,
-        data,
-        {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-    );
-    return res;
+    return await axios.post('https://n8n.naiscorp.com/webhook-test/mock/text', data);
 };

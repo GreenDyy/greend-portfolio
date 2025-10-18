@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, FormEvent, ChangeEvent } from 'react';
+import { useState, useEffect, useRef, type FormEvent, type ChangeEvent } from 'react';
 import { Card, Flex, message, Typography } from 'antd';
-import { getAllProducts, createProduct } from '../../services/productService';
+import { getAllProducts, createProduct, type ProductsResponse } from '../../../services/productService';
 
 interface Product {
     id: string;
@@ -14,12 +14,11 @@ const TestUpload = () => {
     const formRef = useRef<HTMLFormElement>(null);
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [products, setProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await getAllProducts();
-            setProducts(res?.data || []);
+            const res: ProductsResponse = await getAllProducts();
+            setProducts(res?.data as Product[] || []);
         };
         fetchProducts();
     }, []);
@@ -83,7 +82,7 @@ const TestUpload = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(250px, 1fr))', gap: '16px', width: '100%', padding: '16px' }}>
                 {products.map((product) => (
                     <Card key={product.id} hoverable style={{ width: '100%' }}>
-                        <img src={process.env.REACT_APP_API_URL + '/uploads/products/' + product.file} alt={product.name}
+                        <img src={import.meta.env.VITE_API_URL + '/uploads/products/' + product.file} alt={product.name}
                             style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
                         <Card.Meta
                             title={product.name}

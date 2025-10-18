@@ -1,5 +1,5 @@
 import { Flex, Typography } from 'antd';
-import { useBreakpoints } from '../../utilities/breakpoint';
+import { useBreakpoints } from '../../utils/breakpoint';
 import type { CSSProperties } from 'react';
 
 interface VideoProps {

@@ -1,21 +1,21 @@
 import { Suspense, useState, useEffect, useContext } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Loader from '../../components/loader/Loader';
-import Car3D from '../../models3d/Car3D';
-import SeeHouse3D from '../../models3d/SeeHouse';
+import Loader from '../../../components/loader/Loader';
+import Car3D from '../../../models3d/Car3D';
+import SeeHouse3D from '../../../models3d/SeeHouse';
 import './Test.scss';
 import { useNavigate } from 'react-router-dom';
-import Sky from '../../models3d/Sky';
-import Header from '../../components/Header/Header';
-import OldMan from '../../models3d/OldMan';
+import Sky from '../../../models3d/Sky';
+import Header from '../../../components/Header/Header';
+import OldMan from '../../../models3d/OldMan';
 import { Button, FloatButton, message, Table } from 'antd';
-import Message from '../../components/Message/Message';
-import AuthContext from '../../contexts/AuthContext';
-import Phoenix from '../../models3d/Phoenix';
-import Infor from '../../components/Infor/Infor';
-import MouseFollower from '../../components/MouseFollower';
-import PlaySong from '../../components/PlaySong/PlaySong';
+import Message from '../../../components/Message/Message';
+import AuthContext from '../../../contexts/AuthContext';
+import Phoenix from '../../../models3d/Phoenix';
+import Infor from '../../../components/Infor/Infor';
+import MouseFollower from '../../../components/MouseFollower';
+import PlaySong from '../../../components/PlaySong/PlaySong';
 import { QqOutlined, RollbackOutlined } from '@ant-design/icons';
 
 const Test = () => {
@@ -41,7 +41,8 @@ const Test = () => {
         return { screenScale, screenPosition, rotation };
     };
 
-    const { screenScale, screenPosition, rotation } = adjustSeeHouseForScreenSize();
+    // Unused for now
+    // const { screenScale, screenPosition, rotation } = adjustSeeHouseForScreenSize();
     return (
         <>
             <Header />
@@ -102,7 +103,7 @@ const Test = () => {
             </div>
 
             {/* float button */}
-            <FloatButton icon={<RollbackOutlined />} tooltip="Quay lại test-area" onClick={() => navigate('/test-area')} />
+            <FloatButton icon={<RollbackOutlined />} tooltip="Quay lại test-area" onClick={() => navigate('/playground')} />
 
         </>
     );

@@ -1,5 +1,5 @@
 import { Button, Flex, Form, Input } from 'antd';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 
 interface FormValues {
   name: string;

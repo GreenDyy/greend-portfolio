@@ -22,7 +22,7 @@ import {
 
 import { coreTechs, beAndDatabases, tools } from './initData';
 import type { Tech } from './initData';
-import { university } from './text';
+import { university } from './initData';
 import { iconMap } from '../../constants/icons';
 import { useNavigate } from 'react-router-dom';
 import PlaySong from '../../components/PlaySong/PlaySong';
@@ -567,7 +567,7 @@ function Home() {
             onClick={() => { window.open('https://github.com/GreenDyy', '_blank', 'noopener'); }}
           />
           {/* <FloatButton icon={<GlobalOutlined />} tooltip="Website" /> */}
-          <FloatButton icon={<QqOutlined />} tooltip="Vùng thử nghiệm 🤣" onClick={() => navigate('/test-area')} />
+          <FloatButton icon={<QqOutlined />} tooltip="Vùng thử nghiệm 🤣" onClick={() => navigate('/playground')} />
         </FloatButton.Group>
 
         {/*place 3d, đang bị chặn tương tác toàn vùng, cần fix*/}

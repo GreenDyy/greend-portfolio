@@ -31,10 +31,10 @@ import {
 } from '@ant-design/icons'
 
 import { coreTechs, beAndDatabases, tools } from './initData'
-import { university } from './text'
+import { university } from './initData'
 import { useNavigate } from 'react-router-dom'
 import PlaySong from '../../components/PlaySong/PlaySong'
-import { useBreakpoints } from '../../utilities/breakpoint'
+import { useBreakpoints } from '../../utils/breakpoint'
 import Video from '../../components/Video/Video';
 import { PageLoader } from '../../components'
 import { appColors } from '../../constants/appColors'
@@ -426,7 +426,7 @@ function Home() {
             onClick={() => { window.open('https://github.com/GreenDyy', '_blank', 'noopener') }}
           />
           {/* <FloatButton icon={<GlobalOutlined />} tooltip="Website" /> */}
-          <FloatButton icon={<QqOutlined />} tooltip="Vùng thử nghiệm 🤣" onClick={() => navigate('/test-area')} />
+          <FloatButton icon={<QqOutlined />} tooltip="Vùng thử nghiệm 🤣" onClick={() => navigate('/playground')} />
         </FloatButton.Group>
 
         {/*place 3d, đang bị chặn tương tác toàn vùng, cần fix*/}

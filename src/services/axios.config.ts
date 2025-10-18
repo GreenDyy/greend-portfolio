@@ -1,11 +1,16 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios';
 
-const DEV_API_URL = 'http://localhost:4006';
-const PROD_API_URL = 'https://api.example.com';
+// Lấy API URL từ biến môi trường
+const DEV_API_URL = import.meta.env.VITE_DEV_API_URL
+const PROD_API_URL = import.meta.env.VITE_PROD_API_URL
+const NODE_ENV = import.meta.env.VITE_NODE_ENV || import.meta.env.MODE;
+
+// Chọn base URL dựa trên môi trường
+const BASE_URL = NODE_ENV === 'production' ? PROD_API_URL : DEV_API_URL;
 
 // Tạo instance axios với cấu hình cơ bản
 const axiosInstance = axios.create({
-    baseURL: DEV_API_URL,
+    baseURL: BASE_URL,
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
