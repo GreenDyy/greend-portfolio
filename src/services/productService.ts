@@ -11,7 +11,7 @@ export interface Product {
   name: string;
   price: number;
   description?: string;
-  image?: string;
+  file: string; // Required field for file upload
 }
 
 export interface ProductsResponse {
@@ -27,8 +27,8 @@ export const getAllProducts = async (
   params: GetProductsParams = { page: 1, limit: 10 }
 ): Promise<ProductsResponse> => {
   try {
-    const { data } = await axiosInstance.get<ProductsResponse>('/api/products', { params });
-    return data;
+    const response = await axiosInstance.get('/api/products', { params });
+    return response as unknown as ProductsResponse;
   } catch (error) {
     console.error('[getAllProducts] Error:', error);
     throw error;
@@ -37,10 +37,10 @@ export const getAllProducts = async (
 
 export const createProduct = async (data: FormData): Promise<Product> => {
   try {
-    const { data: createdProduct } = await axiosInstance.post<Product>('/api/products', data, {
+    const response = await axiosInstance.post('/api/products', data, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
-    return createdProduct;
+    return response as unknown as Product;
   } catch (error) {
     console.error('[createProduct] Error:', error);
     throw error;
