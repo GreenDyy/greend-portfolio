@@ -1,0 +1,22 @@
+.button-custom {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -25px;
+        width: 0;
+        height: 0;
+        border-top: 15px solid;
+        border-bottom: 15px solid transparent;
+        border-right: 30px solid #000;
+    }
+}
