@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "master": "git checkout master && git pull && git merge dev && git push && git pull && git checkout dev"
+    "master": "git checkout main && git pull && git merge dev && git push && git pull && git checkout dev"
   },
   "dependencies": {
     "@react-spring/parallax": "^10.0.3",
