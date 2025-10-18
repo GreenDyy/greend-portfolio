@@ -26,7 +26,6 @@ import { university } from './text';
 import { iconMap } from '../../constants/icons';
 import { useNavigate } from 'react-router-dom';
 import PlaySong from '../../components/PlaySong/PlaySong';
-import { useBreakpoints } from '../../utilities/breakpoint';
 import Video from '../../components/Video/Video';
 import { PageLoader } from '../../components';
 import { appColors } from '../../constants/appColors';
@@ -49,7 +48,7 @@ function Home() {
   const timerRef = useRef<number | null>(null);
 
   // Helper function để render icon từ iconName
-  const renderIcon = (iconName: string, altText: string) => {
+  const renderIcon = (iconName: string, altText: string = '') => {
     const iconSrc = iconMap[iconName];
     if (!iconSrc) {
       return <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />;
@@ -119,9 +118,9 @@ function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // if (showLoader) {
-  //   return <PageLoader onClick={handleSkipLoader} />;
-  // }
+  if (showLoader) {
+    return <PageLoader onClick={handleSkipLoader} />;
+  }
 
   return (
     <Layout style={{
@@ -145,39 +144,212 @@ function Home() {
           isPlaying={isPlayingSong}
           setIsPlaying={setIsPlayingSong}
         />
+
+
         <Flex vertical justify='center' align='center'>
-          {/* intro */}
-          <Flex className='intro' vertical align='flex-start' style={{ maxWidth: 1200, textAlign: 'left' }}>
-            <Title className={`content-fade-in ${showLines.line1 ? 'is-visible' : ''}`} style={{ color: appColors?.GREEND, fontSize: '68px', margin: 0, padding: 0 }} level={1}>
-              Hii!
+          {/*I. Intro */}
+          <Flex className='intro' vertical align='flex-start' style={{ maxWidth: 1200, width: '100%', textAlign: 'left' }}>
+            {/* Greeting với style đặc biệt */}
+            <Title
+              className={`content-fade-in ${showLines.line1 ? 'is-visible' : ''}`}
+              style={{
+                color: appColors?.GREEND,
+                fontSize: 'clamp(56px, 8vw, 80px)',
+                margin: 0,
+                padding: 0,
+                fontWeight: 900,
+                letterSpacing: '-3px',
+                textShadow: `
+                  0 0 40px rgba(64, 175, 88, 0.6),
+                  0 0 80px rgba(64, 175, 88, 0.3),
+                  0 5px 15px rgba(0, 0, 0, 0.5)
+                `,
+                lineHeight: 1.1,
+                position: 'relative',
+                display: 'inline-block'
+              }}
+              level={1}
+            >
+              Hii! 👋
             </Title>
-            <Title className={`content-fade-in ${showLines.line2 ? 'is-visible' : ''}`} style={{ color: appColors?.GREEND, marginTop: 30 }}>
-              {'My name is Huynh Khanh Duy (GreenD)'}
+
+            {/* Name với gradient text */}
+            <Title
+              className={`content-fade-in ${showLines.line2 ? 'is-visible' : ''}`}
+              style={{
+                fontSize: 'clamp(28px, 4vw, 42px)',
+                fontWeight: 700,
+                marginTop: 24,
+                marginBottom: 0,
+                background: `linear-gradient(135deg, #ffffff 0%, ${appColors?.GREEND} 50%, #2d7d42 100%)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                backgroundSize: '200% auto',
+                animation: 'gradientShift 4s ease infinite',
+                lineHeight: 1.3
+              }}
+              level={2}
+            >
+              My name is <span style={{
+                fontWeight: 900,
+                fontSize: 'clamp(32px, 4.5vw, 48px)'
+              }}>Huynh Khanh Duy</span> (GreenD) ✨
             </Title>
-            <Text className={`content-fade-in ${showLines.line3 ? 'is-visible' : ''}`} style={{ color: 'white', fontSize: '24px', fontWeight: '500' }}>
-              I'm a developer who likes to do different and cool things, learn from great people 😉. Oh, and I really like the color green!🍀
+
+            {/* Description */}
+            <Text
+              className={`content-fade-in ${showLines.line3 ? 'is-visible' : ''}`}
+              style={{
+                color: 'rgba(255, 255, 255, 0.9)',
+                fontSize: 'clamp(16px, 2vw, 22px)',
+                fontWeight: '400',
+                lineHeight: 1.8,
+                marginTop: 24,
+                maxWidth: '850px',
+                display: 'block',
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+              }}
+            >
+              I'm a <span style={{
+                color: appColors?.GREEND,
+                fontWeight: 700,
+                textShadow: `0 0 20px rgba(64, 175, 88, 0.5)`
+              }}>passionate developer</span> who likes to do different and cool things,
+              learn from great people 😉
+              <br />
+              Oh, and I <span style={{
+                color: appColors?.GREEND,
+                fontWeight: 700
+              }}>really love</span> the color green! 🍀💚
             </Text>
-            {/* here */}
-            <Space size={'large'} style={{ marginTop: 20 }}>
-              <Link href="https://github.com/GreenDyy" target="_blank">
-                <GithubOutlined style={{ fontSize: '30px', color: appColors?.GREEND }} />
+
+            {/* Social Links với style mới */}
+            <Flex
+              gap="middle"
+              wrap="wrap"
+              style={{
+                marginTop: 40,
+                paddingTop: 30,
+                borderTop: `2px solid rgba(64, 175, 88, 0.2)`
+              }}
+            >
+              <Link
+                href="https://github.com/GreenDyy"
+                target="_blank"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: 'rgba(64, 175, 88, 0.1)',
+                  border: '2px solid rgba(64, 175, 88, 0.3)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                className="intro-social-icon"
+              >
+                <GithubOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
-              <Link href="https://www.facebook.com/greendyy" target="_blank">
-                <FacebookOutlined style={{ fontSize: '30px', color: appColors?.GREEND }} />
+
+              <Link
+                href="https://www.facebook.com/greendyy"
+                target="_blank"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: 'rgba(64, 175, 88, 0.1)',
+                  border: '2px solid rgba(64, 175, 88, 0.3)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                className="intro-social-icon"
+              >
+                <FacebookOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
-              <Link href="https://www.instagram.com/greendyy" target="_blank">
-                <InstagramOutlined style={{ fontSize: '30px', color: appColors?.GREEND }} />
+
+              <Link
+                href="https://www.instagram.com/greendyy"
+                target="_blank"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: 'rgba(64, 175, 88, 0.1)',
+                  border: '2px solid rgba(64, 175, 88, 0.3)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                className="intro-social-icon"
+              >
+                <InstagramOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
-              <Link href="https://github.com/GreenDyy" target="_blank">
-                <LinkedinOutlined style={{ fontSize: '30px', color: appColors?.GREEND }} />
+
+              <Link
+                href="https://www.linkedin.com/in/greendyy"
+                target="_blank"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: 'rgba(64, 175, 88, 0.1)',
+                  border: '2px solid rgba(64, 175, 88, 0.3)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                className="intro-social-icon"
+              >
+                <LinkedinOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
-              <Link href="https://www.youtube.com/channel/UCvmIHpWJ5HFjA3qqOIXaM7A" target="_blank">
-                <YoutubeOutlined style={{ fontSize: '30px', color: appColors?.GREEND }} />
+
+              <Link
+                href="https://www.youtube.com/channel/UCvmIHpWJ5HFjA3qqOIXaM7A"
+                target="_blank"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: 'rgba(64, 175, 88, 0.1)',
+                  border: '2px solid rgba(64, 175, 88, 0.3)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                className="intro-social-icon"
+              >
+                <YoutubeOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
-              <Link href="https://flight-catch.naiscorp.com/" target="_blank">
-                <TrophyOutlined style={{ fontSize: '30px', color: appColors?.GREEND }} />
+
+              <Link
+                href="https://flight-catch.naiscorp.com/"
+                target="_blank"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: 'rgba(64, 175, 88, 0.1)',
+                  border: '2px solid rgba(64, 175, 88, 0.3)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                className="intro-social-icon"
+              >
+                <TrophyOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
-            </Space>
+            </Flex>
           </Flex>
 
           {/* II. Skills & Expertise */}
