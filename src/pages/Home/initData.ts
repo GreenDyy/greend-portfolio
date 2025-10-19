@@ -52,6 +52,12 @@ const coreTechs: Tech[] = [
         startDate: dayjs('2021-03-01'),
         experience: 'Advanced'
     },
+    {
+        name: 'Java',
+        iconName: 'java',
+        startDate: dayjs('2020-01-01'),
+        experience: 'Intermediate',
+    },
 ];
 
 const beAndDatabases: Tech[] = [

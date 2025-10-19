@@ -1,6 +1,5 @@
 // Import tất cả icons
 import reactIcon from '../assets/icons/react.svg';
-import reactNativeIcon from '../assets/icons/react-native.svg';
 import csharpIcon from '../assets/icons/csharp.svg';
 import javascriptIcon from '../assets/icons/javascript.svg';
 import typescriptIcon from '../assets/icons/typescript.svg';
@@ -17,11 +16,12 @@ import postmanIcon from '../assets/icons/postman.svg';
 import excellIcon from '../assets/icons/excel.svg';
 import powerPointIcon from '../assets/icons/powerpoint.svg';
 import wordIcon from '../assets/icons/word.svg';
+import javaIcon from '../assets/icons/java.svg';
 
 // Mapping object để map tên icon -> path icon
 export const iconMap: Record<string, string> = {
     react: reactIcon,
-    reactNative: reactNativeIcon,
+    reactNative: reactIcon,
     csharp: csharpIcon,
     javascript: javascriptIcon,
     typescript: typescriptIcon,
@@ -38,6 +38,7 @@ export const iconMap: Record<string, string> = {
     excel: excellIcon,
     powerpoint: powerPointIcon,
     word: wordIcon,
+    java: javaIcon,
 } as const;
 
 export const icons = {
