@@ -1,3 +1,4 @@
+import { images } from '../../../constants/images';
 import './PageLoader.scss';
 
 interface PageLoaderProps {
@@ -9,7 +10,7 @@ const PageLoader = (props: PageLoaderProps) => {
     return (
         <div className='pager-loader' onClick={onClick}>
             <div>
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDhlam5hdmUweXJ1dTJzaGcwcXl3dHJhNW8xNDBpdDIxOTI0MGZpZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tn8zWeNYA73G0/giphy.gif" alt="" />
+                <img src={images.giphyLoader} alt="Loader" />
             </div>
         </div>
     );

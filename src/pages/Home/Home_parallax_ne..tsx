@@ -33,10 +33,8 @@ import {
 import { coreTechs, beAndDatabases, tools } from './initData'
 import { university } from './initData'
 import { useNavigate } from 'react-router-dom'
-import PlaySong from '../../components/PlaySong/PlaySong'
-import { useBreakpoints } from '../../utils/breakpoint'
-import Video from '../../components/Video/Video';
-import { PageLoader } from '../../components'
+import { useBreakpoint } from '../../hooks/useBreakpoint'
+import { PageLoader, PlaySong, Video } from '../../components'
 import { appColors } from '../../constants/appColors'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import cat_green from '../../assets/images/parallax/cat_green.png'
@@ -56,7 +54,7 @@ function Home() {
   const [dataTools, setDataTools] = useState(tools)
   const [isPlayingSong, setIsPlayingSong] = useState(false)
   const [isRotating, setIsRotating] = useState(false)
-  const { isMobile, isTablet, isDesktop } = useBreakpoints()
+  const { isMobile, isTablet, isDesktop } = useBreakpoint()
   const [showContent, setShowContent] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const timerRef = useRef(null);
@@ -256,12 +254,12 @@ function Home() {
                     {dataCoreTechs?.map((item, index) => {
                       let icon = null;
                       //xử lý icon
-                      if (item.pathIcon) {
-                        icon = <img src={item.pathIcon} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+                      if (item?.pathIcon) {
+                        icon = <img src={item?.pathIcon} alt={item?.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
                       }
                       else {
-                        if (item.icon) {
-                          icon = item.icon
+                        if (item?.icon) {
+                          icon = item?.icon
                         }
                         else {
                           icon = <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />
@@ -276,7 +274,7 @@ function Home() {
                             <Flex gap={20} align="center">
                               {icon}
                               <Flex vertical>
-                                <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item.name}</Title>
+                                <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
                                 <Text style={{ color: '#999' }}>{item.experience}</Text>
                               </Flex>
                             </Flex>
@@ -298,12 +296,12 @@ function Home() {
                     {dataBeAndDatabases?.map((item, index) => {
                       let icon = null;
                       //xử lý icon
-                      if (item.pathIcon) {
-                        icon = <img src={item.pathIcon} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+                      if (item?.pathIcon) {
+                        icon = <img src={item?.pathIcon} alt={item?.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
                       }
                       else {
-                        if (item.icon) {
-                          icon = item.icon
+                        if (item?.icon) {
+                          icon = item?.icon
                         }
                         else {
                           icon = <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />
@@ -319,7 +317,7 @@ function Home() {
                               {icon}
                               <Flex vertical>
                                 <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
-                                <Text style={{ color: '#999' }}>{item.experience}</Text>
+                                <Text style={{ color: '#999' }}>{item?.experience}</Text>
 
                                 {/* <Text style={{ color: '#999' }}>3 months</Text> */}
                               </Flex>
@@ -342,12 +340,12 @@ function Home() {
                     {dataTools?.map((item, index) => {
                       let icon = null;
                       //xử lý icon
-                      if (item.pathIcon) {
-                        icon = <img src={item.pathIcon} alt={item.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+                      if (item?.pathIcon) {
+                        icon = <img src={item?.pathIcon} alt={item?.name} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
                       }
                       else {
-                        if (item.icon) {
-                          icon = item.icon
+                        if (item?.icon) {
+                          icon = item?.icon
                         }
                         else {
                           icon = <GithubOutlined style={{ fontSize: 40, color: appColors?.GREEND }} />
@@ -468,7 +466,7 @@ function Home() {
               <Video
                 // title="AI LỚN CŨNG PHẢI"
                 description="Có thể chìm nhưng không thể ngã"
-              // src="https://www.youtube.com/embed/zlaEpHztvj0"
+                src="https://www.youtube.com/embed/SivLRE0ez2w"
               />
 
               <Space style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '40px 0' }}>

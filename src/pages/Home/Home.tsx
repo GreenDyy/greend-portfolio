@@ -25,10 +25,9 @@ import type { Tech } from './initData';
 import { university } from './initData';
 import { iconMap } from '../../constants/icons';
 import { useNavigate } from 'react-router-dom';
-import PlaySong from '../../components/PlaySong/PlaySong';
-import Video from '../../components/Video/Video';
-import { PageLoader } from '../../components';
+import { PageLoader, PlaySong, Video } from '../../components';
 import { appColors } from '../../constants/appColors';
+import { dLog } from '../../utils/utils';
 const { Title, Text, Link } = Typography;
 
 interface ShowLines {
@@ -38,6 +37,7 @@ interface ShowLines {
 }
 
 function Home() {
+  const TAG = 'Home';
   const navigate = useNavigate();
   const [dataCoreTechs, setDataCoreTechs] = useState<Tech[]>(coreTechs);
   const [dataBeAndDatabases, setDataBeAndDatabases] = useState<Tech[]>(beAndDatabases);
@@ -100,6 +100,7 @@ function Home() {
   };
 
   useEffect(() => {
+    dLog(TAG, 'test dlog nè');
     //set data
     setDataCoreTechs(coreTechs);
     setDataBeAndDatabases(beAndDatabases);

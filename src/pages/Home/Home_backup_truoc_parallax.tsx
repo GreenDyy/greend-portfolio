@@ -33,10 +33,8 @@ import {
 import { coreTechs, beAndDatabases, tools } from './initData'
 import { university } from './initData'
 import { useNavigate } from 'react-router-dom'
-import PlaySong from '../../components/PlaySong/PlaySong'
-import { useBreakpoints } from '../../utils/breakpoint'
-import Video from '../../components/Video/Video';
-import { PageLoader } from '../../components'
+import { useBreakpoint } from '../../hooks/useBreakpoint'
+import { PageLoader, Video, PlaySong } from '../../components'
 import { appColors } from '../../constants/appColors'
 const { Title, Text, Link } = Typography
 
@@ -47,7 +45,7 @@ function Home() {
   const [dataTools, setDataTools] = useState(tools)
   const [isPlayingSong, setIsPlayingSong] = useState(false)
   const [isRotating, setIsRotating] = useState(false)
-  const { isMobile, isTablet, isDesktop } = useBreakpoints()
+  const { isMobile, isTablet, isDesktop } = useBreakpoint()
   const [showContent, setShowContent] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const timerRef = useRef(null);

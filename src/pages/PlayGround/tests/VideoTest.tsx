@@ -1,9 +1,9 @@
 import { Flex, Typography } from 'antd';
-import { useBreakpoints } from '../../../utils/breakpoint';
+import { useBreakpoint } from '../../../hooks/useBreakpoint';
 
 function VideoTest() {
-    const { isMobile, isTablet } = useBreakpoints();
-    
+    const { isMobile, isTablet } = useBreakpoint();
+
     const getVideoSize = () => {
         if (isMobile) {
             return { width: '100%', height: '100%' };
@@ -28,9 +28,9 @@ function VideoTest() {
             }}>
                 <iframe
                     style={{ width: '100%', height: '100%', border: 'none' }}
-                    src="https://www.youtube.com/embed/SivLRE0ez2w" 
-                    title="CAPTAIsasaN BOY - AI LỚN CŨNG PHẢI | ANIMATION MV" 
-                    referrerPolicy="strict-origin-when-cross-origin" 
+                    src="https://www.youtube.com/embed/SivLRE0ez2w"
+                    title="CAPTAIsasaN BOY - AI LỚN CŨNG PHẢI | ANIMATION MV"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen>
                 </iframe>
             </Flex>
