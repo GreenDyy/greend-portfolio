@@ -17,7 +17,9 @@ import {
   CloseOutlined,
   HeartTwoTone,
   PauseOutlined,
-  QqOutlined
+  QqOutlined,
+  HeartFilled,
+  CodeSandboxOutlined
 } from '@ant-design/icons';
 
 import { coreTechs, beAndDatabases, tools } from './initData';
@@ -348,7 +350,7 @@ function Home() {
                 }}
                 className="intro-social-icon"
               >
-                <TrophyOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
+                <CodeSandboxOutlined style={{ fontSize: '26px', color: appColors?.GREEND, zIndex: 1 }} />
               </Link>
             </Flex>
           </Flex>
@@ -356,89 +358,157 @@ function Home() {
           {/* II. Skills & Expertise */}
           <Flex
             vertical
-            style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto' }}
+            style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
           >
-            <Title style={{ color: appColors?.GREEND, marginBottom: 40, textAlign: 'center' }}>
+            <Title
+              style={{
+                color: appColors?.GREEND,
+                marginBottom: 60,
+                fontSize: 'clamp(32px, 5vw, 48px)',
+                fontWeight: 900,
+                textAlign: 'center',
+                textShadow: `
+                  0 0 40px rgba(64, 175, 88, 0.5),
+                  0 0 80px rgba(64, 175, 88, 0.2)
+                `,
+                position: 'relative',
+                paddingBottom: 20
+              }}
+              className="section-title"
+            >
               Skills & Expertise
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '120px',
+                height: '4px',
+                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
+                borderRadius: '2px',
+                boxShadow: `0 0 15px ${appColors?.GREEND}`
+              }} />
             </Title>
 
             {/* Core Technologies */}
             <Flex
               vertical
+              gap={30}
+              className="skills-section"
             >
-              <Title level={2} style={{ color: 'white', marginBottom: 40, textAlign: 'left' }}>
-                {/* <span style={{ color: green[6], marginRight: 10 }}>|</span> Core Technologies */}
-                <FireFilled style={{ color: appColors?.GREEND, marginRight: 8 }} />
-                Core Technologies
+              <Title level={2} className='title-custom-modern'>
+                <div className="title-icon-wrapper">
+                  <img src={iconMap.core} className="icon-title" alt="Core Technologies" />
+                </div>
+                <span className="title-text">Core Technologies</span>
+                <div className="title-line" />
               </Title>
               <Row gutter={[24, 24]}>
                 {dataCoreTechs?.map((item, index) => (
                   <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
                     <Card
                       hoverable
-                      className="card-custom"
+                      className="card-custom-modern"
+                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <Flex gap={20} align="center">
+                      <Flex gap={16} align="center" vertical={false}>
                         {renderIcon(item.iconName, item.name)}
-                        <Flex vertical>
-                          <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item.name}</Title>
-                          <Text style={{ color: '#999' }}>{item.experience}</Text>
+                        <Flex vertical style={{ flex: 1 }}>
+                          <Title level={4} style={{ color: 'white', margin: 0, marginBottom: 8, fontWeight: 700 }}>
+                            {item.name}
+                          </Title>
+                          <div className="experience-badge">
+                            <span className={`badge-text ${item.experience.toLowerCase()}`}>
+                              {item.experience}
+                            </span>
+                          </div>
                         </Flex>
                       </Flex>
+                      <div className="card-glow" />
                     </Card>
                   </Col>
                 ))}
               </Row>
             </Flex>
+
             {/* Backend & Database */}
             <Flex
               vertical
+              gap={30}
+              className="skills-section"
+              style={{ marginTop: 60 }}
             >
-              <Title level={2} style={{ color: 'white', marginBottom: 40, textAlign: 'left' }}>
-                <DatabaseFilled style={{ color: appColors?.GREEND, marginRight: 8 }} />
-                Backend & Database
+              <Title level={2} className='title-custom-modern'>
+                <div className="title-icon-wrapper">
+                  <img src={iconMap.database} className="icon-title" alt="Backend & Database" />
+                </div>
+                <span className="title-text">Backend & Database</span>
+                <div className="title-line" />
               </Title>
               <Row gutter={[24, 24]}>
                 {dataBeAndDatabases?.map((item, index) => (
                   <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
                     <Card
                       hoverable
-                      className="card-custom"
+                      className="card-custom-modern"
+                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <Flex gap={20} align='center'>
+                      <Flex gap={16} align='center' vertical={false}>
                         {renderIcon(item.iconName, item.name)}
-                        <Flex vertical>
-                          <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
-                          <Text style={{ color: '#999' }}>{item.experience}</Text>
+                        <Flex vertical style={{ flex: 1 }}>
+                          <Title level={4} style={{ color: 'white', margin: 0, marginBottom: 8, fontWeight: 700 }}>
+                            {item?.name}
+                          </Title>
+                          <div className="experience-badge">
+                            <span className={`badge-text ${item.experience.toLowerCase()}`}>
+                              {item.experience}
+                            </span>
+                          </div>
                         </Flex>
                       </Flex>
+                      <div className="card-glow" />
                     </Card>
                   </Col>
                 ))}
               </Row>
             </Flex>
+
             {/* Tools & DevOps */}
             <Flex
               vertical
+              gap={30}
+              className="skills-section"
+              style={{ marginTop: 60 }}
             >
-              <Title level={2} style={{ color: 'white', marginBottom: 40, textAlign: 'left' }}>
-                <ToolFilled style={{ color: appColors?.GREEND, marginRight: 8 }} />
-                Tools
+              <Title level={2} className='title-custom-modern'>
+                <div className="title-icon-wrapper">
+                  <img src={iconMap.tools} className="icon-title" alt="Tools" />
+                </div>
+                <span className="title-text">Tools</span>
+                <div className="title-line" />
               </Title>
               <Row gutter={[24, 24]}>
                 {dataTools?.map((item, index) => (
                   <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
                     <Card
                       hoverable
-                      className="card-custom"
+                      className="card-custom-modern"
+                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <Flex gap={20} align='center'>
+                      <Flex gap={16} align='center' vertical={false}>
                         {renderIcon(item.iconName, item.name)}
-                        <Flex vertical>
-                          <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>{item?.name}</Title>
-                          <Text style={{ color: '#999' }}>{item.experience}</Text>
+                        <Flex vertical style={{ flex: 1 }}>
+                          <Title level={4} style={{ color: 'white', margin: 0, marginBottom: 8, fontWeight: 700 }}>
+                            {item?.name}
+                          </Title>
+                          <div className="experience-badge">
+                            <span className={`badge-text ${item.experience.toLowerCase()}`}>
+                              {item.experience}
+                            </span>
+                          </div>
                         </Flex>
                       </Flex>
+                      <div className="card-glow" />
                     </Card>
                   </Col>
                 ))}
@@ -449,14 +519,42 @@ function Home() {
           {/* III. Education */}
           <Flex
             vertical
-            style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto' }}
+            style={{ padding: "80px 20px 40px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
           >
-            <Title style={{ color: appColors?.GREEND, marginBottom: 40, textAlign: 'center' }}>
+            <Title
+              style={{
+                color: appColors?.GREEND,
+                marginBottom: 60,
+                fontSize: 'clamp(32px, 5vw, 48px)',
+                fontWeight: 900,
+                textAlign: 'center',
+                textShadow: `
+                  0 0 40px rgba(64, 175, 88, 0.5),
+                  0 0 80px rgba(64, 175, 88, 0.2)
+                `,
+                position: 'relative',
+                paddingBottom: 20
+              }}
+              className="section-title"
+            >
               Education
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '120px',
+                height: '4px',
+                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
+                borderRadius: '2px',
+                boxShadow: `0 0 15px ${appColors?.GREEND}`
+              }} />
             </Title>
 
             <Card
-              style={{ textAlign: 'left', background: '#1e1e1e', border: '1px solid #333' }}
+              hoverable
+              className="info-card-modern"
+              style={{ textAlign: 'left' }}
             >
               <Title level={4} style={{ marginTop: 0, color: 'white' }}>{university.name}</Title>
 
@@ -472,14 +570,42 @@ function Home() {
             vertical
             style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
           >
-            <Title style={{ color: appColors?.GREEND, marginBottom: 40, textAlign: 'center' }}>
+            <Title
+              style={{
+                color: appColors?.GREEND,
+                marginBottom: 60,
+                fontSize: 'clamp(32px, 5vw, 48px)',
+                fontWeight: 900,
+                textAlign: 'center',
+                textShadow: `
+                  0 0 40px rgba(64, 175, 88, 0.5),
+                  0 0 80px rgba(64, 175, 88, 0.2)
+                `,
+                position: 'relative',
+                paddingBottom: 20
+              }}
+              className="section-title"
+            >
               Languages
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '120px',
+                height: '4px',
+                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
+                borderRadius: '2px',
+                boxShadow: `0 0 15px ${appColors?.GREEND}`
+              }} />
             </Title>
 
             <Row gutter={[24, 24]} justify="center">
               <Col xs={24} sm={12} style={{ display: 'flex' }}>
                 <Card
-                  style={{ background: '#1e1e1e', border: '1px solid #333', width: '100%' }}
+                  hoverable
+                  className="info-card-modern"
+                  style={{ width: '100%' }}
                 >
                   <Flex align="center" gap={16}>
                     <GlobalOutlined style={{ fontSize: 32, color: appColors?.GREEND }} />
@@ -494,7 +620,9 @@ function Home() {
 
               <Col xs={24} sm={12} style={{ display: 'flex' }}>
                 <Card
-                  style={{ background: '#1e1e1e', border: '1px solid #333', width: '100%' }}
+                  hoverable
+                  className="info-card-modern"
+                  style={{ width: '100%' }}
                 >
                   <Flex align="center" gap={16}>
                     <GlobalOutlined style={{ fontSize: 32, color: appColors?.GREEND }} />
@@ -514,14 +642,42 @@ function Home() {
             vertical
             style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
           >
-            <Title style={{ color: appColors?.GREEND, marginBottom: 40, textAlign: 'center' }}>
+            <Title
+              style={{
+                color: appColors?.GREEND,
+                marginBottom: 60,
+                fontSize: 'clamp(32px, 5vw, 48px)',
+                fontWeight: 900,
+                textAlign: 'center',
+                textShadow: `
+                  0 0 40px rgba(64, 175, 88, 0.5),
+                  0 0 80px rgba(64, 175, 88, 0.2)
+                `,
+                position: 'relative',
+                paddingBottom: 20
+              }}
+              className="section-title"
+            >
               Certifications & Awards
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '120px',
+                height: '4px',
+                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
+                borderRadius: '2px',
+                boxShadow: `0 0 15px ${appColors?.GREEND}`
+              }} />
             </Title>
 
             <Row gutter={[24, 24]} justify="center">
               <Col xs={24} sm={12} style={{ display: 'flex' }}>
                 <Card
-                  style={{ background: '#1e1e1e', border: '1px solid #333', width: '100%' }}
+                  hoverable
+                  className="info-card-modern"
+                  style={{ width: '100%' }}
                 >
                   <Flex align='center' gap={16}>
                     <TrophyOutlined style={{ fontSize: 32, color: appColors?.GREEND }} />
@@ -544,31 +700,113 @@ function Home() {
           // src="https://www.youtube.com/embed/zlaEpHztvj0"
           />
 
-          <Space style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '40px 0' }}>
-            <Link href="https://github.com/GreenDyy" target="_blank">
-              <GithubOutlined style={{ fontSize: 32, color: '#A6A6A6', marginRight: 24, transition: 'color 0.3s' }} className="social-icon" />
-            </Link>
-            <Link href="https://www.facebook.com/greendyy" target="_blank">
-              <FacebookOutlined style={{ fontSize: 32, color: '#A6A6A6', marginRight: 24, transition: 'color 0.3s' }} className="social-icon" />
-            </Link>
-            <Link href="https://linkedin.com" target="_blank">
-              <LinkedinOutlined style={{ fontSize: 32, color: '#A6A6A6', marginRight: 24, transition: 'color 0.3s' }} className="social-icon" />
-            </Link>
-            <Link href="https://www.youtube.com/channel/UCvmIHpWJ5HFjA3qqOIXaM7A" target="_blank">
-              <YoutubeOutlined style={{ fontSize: 32, color: '#A6A6A6', transition: 'color 0.3s' }} className="social-icon" />
-            </Link>
-          </Space>
+          {/* Footer Social Links */}
+          <Flex
+            vertical
+            align="center"
+            style={{
+              width: '100%',
+              padding: '60px 20px 40px',
+              maxWidth: 1200,
+              margin: '0 auto'
+            }}
+          >
+            {/* Divider */}
+            <div style={{
+              width: '100%',
+              height: '1px',
+              background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
+              marginBottom: 40,
+              boxShadow: `0 0 10px ${appColors?.GREEND}`
+            }} />
+
+            {/* Social Icons */}
+            <Flex gap={24} wrap="wrap" justify="center" className="footer-social-container">
+              <Link
+                href="https://github.com/GreenDyy"
+                target="_blank"
+                className="footer-social-link"
+              >
+                <div className="footer-social-icon-wrapper">
+                  <GithubOutlined className="footer-social-icon" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://www.facebook.com/greendyy"
+                target="_blank"
+                className="footer-social-link"
+              >
+                <div className="footer-social-icon-wrapper">
+                  <FacebookOutlined className="footer-social-icon" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://linkedin.com/in/greendyy"
+                target="_blank"
+                className="footer-social-link"
+              >
+                <div className="footer-social-icon-wrapper">
+                  <LinkedinOutlined className="footer-social-icon" />
+                </div>
+              </Link>
+
+              <Link
+                href="https://www.youtube.com/channel/UCvmIHpWJ5HFjA3qqOIXaM7A"
+                target="_blank"
+                className="footer-social-link"
+              >
+                <div className="footer-social-icon-wrapper">
+                  <YoutubeOutlined className="footer-social-icon" />
+                </div>
+              </Link>
+            </Flex>
+
+            {/* Copyright */}
+            <Text style={{
+              color: 'rgba(255, 255, 255, 0.5)',
+              fontSize: 14,
+              marginTop: 32,
+              textAlign: 'center'
+            }}>
+              Made with 💚 by GreenD
+            </Text>
+          </Flex>
         </Flex>
 
-        <FloatButton.Group trigger="click" icon={<HeartTwoTone twoToneColor={appColors?.GREEND} />} closeIcon={<CloseOutlined />}>
-          <FloatButton icon={isPlayingSong ? <PauseOutlined /> : <CustomerServiceFilled />} onClick={handlePlaySong} tooltip="Âm nhạc" />
+        <FloatButton.Group
+          trigger="click"
+          className='custom-float-btn'
+          icon={<HeartFilled style={{ color: appColors?.GREEND }} />}
+          closeIcon={<CloseOutlined style={{ color: appColors?.GREEND }} />}
+        >
           <FloatButton
-            icon={<GithubOutlined />}
+            icon={isPlayingSong ? <PauseOutlined style={{ color: appColors?.GREEND }} /> : <CustomerServiceFilled style={{ color: appColors?.GREEND }} />}
+            onClick={handlePlaySong}
+            tooltip="Âm nhạc"
+          />
+          <FloatButton
+            icon={<GithubOutlined style={{ color: appColors?.GREEND }} />}
             tooltip="Github"
-            onClick={() => { window.open('https://github.com/GreenDyy', '_blank', 'noopener'); }}
+            onClick={() => {
+              window.open('https://github.com/GreenDyy', '_blank', 'noopener');
+            }}
           />
           {/* <FloatButton icon={<GlobalOutlined />} tooltip="Website" /> */}
-          <FloatButton icon={<QqOutlined />} tooltip="Vùng thử nghiệm 🤣" onClick={() => navigate('/playground')} />
+          <FloatButton
+            icon={<QqOutlined style={{ color: appColors?.GREEND }} />}
+            tooltip="Vùng thử nghiệm 🤣"
+            onClick={() => navigate('/playground')}
+          />
+
+          <FloatButton
+            icon={<CodeSandboxOutlined style={{ color: appColors?.GREEND }} />}
+            tooltip="My Game"
+            onClick={() => {
+              window.open('https://flight-catch.naiscorp.com/', '_blank', 'noopener');
+            }}
+          />
         </FloatButton.Group>
 
         {/*place 3d, đang bị chặn tương tác toàn vùng, cần fix*/}

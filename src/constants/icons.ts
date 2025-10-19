@@ -17,6 +17,10 @@ import excellIcon from '../assets/icons/excel.svg';
 import powerPointIcon from '../assets/icons/powerpoint.svg';
 import wordIcon from '../assets/icons/word.svg';
 import javaIcon from '../assets/icons/java.svg';
+//png
+import coreIcon from '../assets/icons/core.png';
+import databaseIcon from '../assets/icons/database.png';
+import toolsIcon from '../assets/icons/tools.png';
 
 // Mapping object để map tên icon -> path icon
 export const iconMap: Record<string, string> = {
@@ -39,6 +43,9 @@ export const iconMap: Record<string, string> = {
     powerpoint: powerPointIcon,
     word: wordIcon,
     java: javaIcon,
+    core: coreIcon,
+    database: databaseIcon,
+    tools: toolsIcon,
 } as const;
 
 export const icons = {

@@ -135,13 +135,13 @@
     }
 }
 
+// Old card custom (giữ lại cho tương thích)
 .card-custom {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 
-    // Làm sáng text trong cards
     .ant-typography {
         color: rgba(255, 255, 255, 0.95) !important;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -162,3 +162,568 @@
         }
     }
 }
+
+// Modern card với glassmorphism và gradient border
+.card-custom-modern {
+    position: relative;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    animation: cardFadeIn 0.6s ease-out backwards;
+
+    // Gradient border effect
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        padding: 2px;
+        background: linear-gradient(135deg,
+                rgba(64, 175, 88, 0.3),
+                rgba(64, 175, 88, 0.05),
+                transparent);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0.6;
+        transition: opacity 0.4s ease;
+    }
+
+    // Glow effect (ẩn mặc định)
+    .card-glow {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle,
+                rgba(64, 175, 88, 0.15) 0%,
+                transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    // Direct icon styling (no wrapper)
+    img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    // Experience badge styling
+    .experience-badge {
+        display: inline-block;
+        margin-top: 4px;
+
+        .badge-text {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+
+            // Colors for different levels
+            &.expert {
+                background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+                color: #FFD700;
+                border: 1px solid rgba(255, 215, 0, 0.3);
+            }
+
+            &.advanced {
+                background: linear-gradient(135deg, rgba(64, 175, 88, 0.15), rgba(64, 175, 88, 0.05));
+                color: #40AF58;
+                border: 1px solid rgba(64, 175, 88, 0.3);
+            }
+
+            &.intermediate {
+                background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.05));
+                color: #2196F3;
+                border: 1px solid rgba(33, 150, 243, 0.3);
+            }
+
+            &.beginner {
+                background: linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(156, 39, 176, 0.05));
+                color: #9C27B0;
+                border: 1px solid rgba(156, 39, 176, 0.3);
+            }
+        }
+    }
+
+    // Hover effects
+    &:hover {
+        transform: translateY(-8px) scale(1.02);
+        background: linear-gradient(135deg,
+                rgba(64, 175, 88, 0.1) 0%,
+                rgba(64, 175, 88, 0.05) 100%);
+        border-color: transparent;
+        box-shadow:
+            0 20px 40px rgba(64, 175, 88, 0.3),
+            0 0 30px rgba(64, 175, 88, 0.2),
+            inset 0 0 20px rgba(64, 175, 88, 0.05);
+
+        &::before {
+            opacity: 1;
+            background: linear-gradient(135deg,
+                    rgba(64, 175, 88, 0.8),
+                    rgba(64, 175, 88, 0.3),
+                    transparent);
+        }
+
+        .card-glow {
+            opacity: 1;
+        }
+
+        img {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 15px rgba(64, 175, 88, 0.8));
+        }
+
+        .experience-badge .badge-text {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px currentColor;
+        }
+    }
+}
+
+// Fade in animation for cards
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Section title modern style
+.ant-typography.title-custom-modern {
+    color: white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+
+    .title-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg,
+                rgba(64, 175, 88, 0.3),
+                rgba(64, 175, 88, 0.1));
+        border: 2px solid rgba(64, 175, 88, 0.4);
+        box-shadow:
+            0 0 20px rgba(64, 175, 88, 0.3),
+            inset 0 0 10px rgba(64, 175, 88, 0.1);
+        transition: all 0.4s ease;
+
+        .icon-title {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(64, 175, 88, 0.6));
+        }
+    }
+
+    .title-text {
+        font-size: clamp(20px, 3vw, 28px);
+        font-weight: 700;
+        background: linear-gradient(135deg,
+                #ffffff 0%,
+                #40AF58 50%,
+                #ffffff 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: titleShimmer 3s ease infinite;
+    }
+
+    .title-line {
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(90deg,
+                rgba(64, 175, 88, 0.6),
+                rgba(64, 175, 88, 0.2),
+                transparent);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(64, 175, 88, 0.3);
+    }
+
+    &:hover {
+        .title-icon-wrapper {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg,
+                    rgba(64, 175, 88, 0.5),
+                    rgba(64, 175, 88, 0.2));
+            border-color: rgba(64, 175, 88, 0.8);
+            box-shadow:
+                0 0 30px rgba(64, 175, 88, 0.5),
+                inset 0 0 15px rgba(64, 175, 88, 0.2);
+        }
+    }
+}
+
+// Title shimmer animation
+@keyframes titleShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+// Skills section animation
+.skills-section {
+    animation: sectionFadeIn 0.8s ease-out;
+}
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Main section title
+.section-title {
+    animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 40px rgba(64, 175, 88, 0.5),
+            0 0 80px rgba(64, 175, 88, 0.2);
+    }
+
+    50% {
+        text-shadow:
+            0 0 50px rgba(64, 175, 88, 0.7),
+            0 0 100px rgba(64, 175, 88, 0.3);
+    }
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+}
+
+.ant-typography.title-custom {
+    color: white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+// ============================================
+// INFO CARD MODERN (Education, Languages, Certifications)
+// ============================================
+.info-card-modern {
+    position: relative;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.02) 100%) !important;
+    border: 2px solid transparent !important;
+    border-radius: 18px;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    // Gradient border effect
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        padding: 2px;
+        background: linear-gradient(135deg,
+                rgba(64, 175, 88, 0.35),
+                rgba(64, 175, 88, 0.08),
+                transparent);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0.6;
+        transition: opacity 0.4s ease;
+    }
+
+    // Glow effect
+    &::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle,
+                rgba(64, 175, 88, 0.15) 0%,
+                transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    // Ensure content is above glow
+    .ant-card-body {
+        position: relative;
+        z-index: 1;
+    }
+
+    // Style for icons
+    .anticon {
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    // Hover effects
+    &:hover {
+        transform: translateY(-10px) scale(1.02);
+        background: linear-gradient(135deg,
+                rgba(64, 175, 88, 0.1) 0%,
+                rgba(64, 175, 88, 0.04) 100%) !important;
+        box-shadow:
+            0 20px 40px rgba(64, 175, 88, 0.3),
+            0 0 35px rgba(64, 175, 88, 0.2),
+            inset 0 0 20px rgba(64, 175, 88, 0.06);
+
+        &::before {
+            opacity: 1;
+            background: linear-gradient(135deg,
+                    rgba(64, 175, 88, 0.5),
+                    rgba(64, 175, 88, 0.25),
+                    transparent);
+        }
+
+        &::after {
+            opacity: 1;
+        }
+
+        .anticon {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 12px rgba(64, 175, 88, 0.7));
+        }
+
+        // Text glow on hover
+        .ant-typography {
+            text-shadow: 0 0 8px rgba(64, 175, 88, 0.3);
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 768px) {
+        &:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+    }
+}
+
+// ============================================
+// FOOTER SOCIAL LINKS
+// ============================================
+.footer-social-container {
+    position: relative;
+}
+
+.footer-social-link {
+    position: relative;
+    // display: inline-block;
+    text-decoration: none;
+
+    .footer-social-icon-wrapper {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+        border: 2px solid rgba(64, 175, 88, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+
+        // Gradient border effect
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg,
+                    rgba(64, 175, 88, 0.4),
+                    rgba(64, 175, 88, 0.1),
+                    transparent);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        // Glow effect
+        &::after {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: radial-gradient(circle,
+                    rgba(64, 175, 88, 0.3) 0%,
+                    transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .footer-social-icon {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.4s ease;
+            z-index: 1;
+            position: relative;
+        }
+    }
+
+    // Hover effects
+    &:hover {
+        .footer-social-icon-wrapper {
+            transform: translateY(-8px) scale(1.1);
+            background: linear-gradient(135deg,
+                    rgba(64, 175, 88, 0.15) 0%,
+                    rgba(64, 175, 88, 0.05) 100%);
+            border-color: rgba(64, 175, 88, 0.5);
+            box-shadow:
+                0 10px 30px rgba(64, 175, 88, 0.3),
+                0 0 40px rgba(64, 175, 88, 0.2),
+                inset 0 0 20px rgba(64, 175, 88, 0.05);
+
+            &::before {
+                opacity: 1;
+            }
+
+            &::after {
+                opacity: 1;
+            }
+
+            .footer-social-icon {
+                color: #40AF58;
+                transform: scale(1.15) rotate(5deg);
+                filter: drop-shadow(0 0 15px rgba(64, 175, 88, 0.8));
+            }
+        }
+    }
+
+    // Active/Click effect
+    &:active {
+        .footer-social-icon-wrapper {
+            transform: translateY(-6px) scale(1.05);
+        }
+    }
+}
+
+// Animation for footer social icons
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.footer-social-link:nth-child(1) .footer-social-icon-wrapper {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.footer-social-link:nth-child(2) .footer-social-icon-wrapper {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.footer-social-link:nth-child(3) .footer-social-icon-wrapper {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+.footer-social-link:nth-child(4) .footer-social-icon-wrapper {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 0.6s;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .footer-social-link {
+        .footer-social-icon-wrapper {
+            width: 56px;
+            height: 56px;
+
+            .footer-social-icon {
+                font-size: 24px;
+            }
+        }
+
+        &:hover {
+            .footer-social-icon-wrapper {
+                transform: translateY(-6px) scale(1.08);
+            }
+        }
+    }
+}
+
+
+// .custom-float-btn .ant-float-btn-body {
+//     background-color: #40AF58 !important;
+//     border-color: #40AF58 !important;
+// }
