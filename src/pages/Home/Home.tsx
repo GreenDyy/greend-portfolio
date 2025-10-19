@@ -95,6 +95,9 @@ function Home() {
 
     // Bắt đầu animation content
     startContentAnimation();
+
+    // Lưu lại đã load lần đầu
+    sessionStorage.setItem('hasLoadedHome', 'true');
   };
 
   useEffect(() => {
@@ -104,17 +107,28 @@ function Home() {
     setDataBeAndDatabases(beAndDatabases);
     setDataTools(tools);
 
-    //xử lý animation
-    const timer = setTimeout(() => {
+    // Check xem đã load lần đầu chưa (dùng sessionStorage)
+    const hasLoadedBefore = sessionStorage.getItem('hasLoadedHome');
+
+    if (hasLoadedBefore) {
+      // Đã load rồi, bỏ qua loader
       setShowLoader(false);
-      setTimeout(() => {
-        startContentAnimation();
-      }, 300);
-    }, 2000);
+      startContentAnimation();
+    } else {
+      // Lần đầu load, hiện loader
+      const timer = setTimeout(() => {
+        setShowLoader(false);
+        setTimeout(() => {
+          startContentAnimation();
+          // Lưu lại đã load lần đầu
+          sessionStorage.setItem('hasLoadedHome', 'true');
+        }, 300);
+      }, 2000);
 
-    timerRef.current = timer;
+      timerRef.current = timer;
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   if (showLoader) {
