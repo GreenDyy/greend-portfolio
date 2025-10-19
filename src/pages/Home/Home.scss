@@ -1,31 +1,21 @@
 //màu xanh xịn #40AF58
-.container {
+.full-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     min-height: 100vh;
-    position: relative;
-    // background-image: url('../../assets/images/black_wallpaper.jpg');
     background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../../assets/images/bg_green.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
 
-    // Overlay radial gradient - tối ở góc, sáng ở giữa
-    // &::before {
-    //     content: '';
-    //     position: fixed;
-    //     top: 0;
-    //     left: 0;
-    //     width: 100%;
-    //     height: 100%;
-    //     background: radial-gradient(
-    //         ellipse at center,
-    //         rgba(0, 0, 0, 0.3) 0%,
-    //         rgba(0, 0, 0, 0.6) 50%,
-    //         rgba(0, 0, 0, 0.8) 100%
-    //     );
-    //     z-index: 1;
-    //     pointer-events: none;
-    // }
+.container {
+    max-width: 1200px;
+    min-height: 100vh;
+    position: relative;
 
     .intro {
         padding: 80px 50px;

@@ -9,13 +9,9 @@ import {
   LinkedinOutlined,
   YoutubeOutlined,
   CustomerServiceFilled,
-  FireFilled,
-  ToolFilled,
-  DatabaseFilled,
   GlobalOutlined,
   TrophyOutlined,
   CloseOutlined,
-  HeartTwoTone,
   PauseOutlined,
   QqOutlined,
   HeartFilled,
@@ -126,32 +122,20 @@ function Home() {
   }
 
   return (
-    <Layout style={{
-      color: "white",
-      overflow: 'hidden',
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: '#000'
-    }}>
+    <Layout className='full-screen'>
       {/* <Header /> */}
-
-      <Layout.Content className={`container ${showContent ? 'content-visible' : 'content-hidden'}`} style={{
-        width: '100%',
-        maxWidth: '100%',
-        margin: 0,
-        padding: 0
-      }}>
-        <PlaySong
+      <Layout.Content className={`container ${showContent ? 'content-visible' : 'content-hidden'}`}>
+        {/* <PlaySong
           src="/audios/TinhYeuDau.mp3"
           hidden
           isPlaying={isPlayingSong}
           setIsPlaying={setIsPlayingSong}
-        />
+        /> */}
 
 
         <Flex vertical justify='center' align='center'>
           {/*I. Intro */}
-          <Flex className='intro' vertical align='flex-start' style={{ maxWidth: 1200, width: '100%', textAlign: 'left' }}>
+          <Flex className='intro' vertical align='flex-start' style={{ width: '100%', textAlign: 'left' }}>
             {/* Greeting với style đặc biệt */}
             <Title
               className={`content-fade-in ${showLines.line1 ? 'is-visible' : ''}`}
@@ -335,8 +319,7 @@ function Home() {
               </Link>
 
               <Link
-                href="https://flight-catch.naiscorp.com/"
-                target="_blank"
+                href="/games"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -358,7 +341,7 @@ function Home() {
           {/* II. Skills & Expertise */}
           <Flex
             vertical
-            style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
+            style={{ padding: "40px 20px", width: '100%' }}
           >
             <Title
               style={{
@@ -519,7 +502,7 @@ function Home() {
           {/* III. Education */}
           <Flex
             vertical
-            style={{ padding: "80px 20px 40px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
+            style={{ padding: "80px 20px 40px", width: '100%' }}
           >
             <Title
               style={{
@@ -568,7 +551,7 @@ function Home() {
           {/* IV. Languages */}
           <Flex
             vertical
-            style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
+            style={{ padding: "40px 20px", width: '100%' }}
           >
             <Title
               style={{
@@ -640,7 +623,7 @@ function Home() {
           {/* V. Certifications & Awards */}
           <Flex
             vertical
-            style={{ padding: "40px 20px", maxWidth: 1200, margin: '0 auto', width: '100%' }}
+            style={{ padding: "40px 20px", width: '100%' }}
           >
             <Title
               style={{
@@ -706,9 +689,7 @@ function Home() {
             align="center"
             style={{
               width: '100%',
-              padding: '60px 20px 40px',
-              maxWidth: 1200,
-              margin: '0 auto'
+              padding: '60px 20px 40px'
             }}
           >
             {/* Divider */}
@@ -802,10 +783,8 @@ function Home() {
 
           <FloatButton
             icon={<CodeSandboxOutlined style={{ color: appColors?.GREEND }} />}
-            tooltip="My Game"
-            onClick={() => {
-              window.open('https://flight-catch.naiscorp.com/', '_blank', 'noopener');
-            }}
+            tooltip="My Games 🎮"
+            onClick={() => navigate('/games')}
           />
         </FloatButton.Group>
 
