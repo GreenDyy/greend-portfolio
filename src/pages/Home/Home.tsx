@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './Home.scss';
 import '../../styles/global-animations.scss';
-import { Card, Col, Flex, FloatButton, Layout, Row, Space, Typography } from 'antd';
+import { Card, Col, Flex, FloatButton, Layout, Row, Typography } from 'antd';
 import {
   GithubOutlined,
   FacebookOutlined,
@@ -160,14 +160,7 @@ function Home() {
                 padding: 0,
                 fontWeight: 900,
                 letterSpacing: '-3px',
-                textShadow: `
-                  0 0 40px rgba(64, 175, 88, 0.6),
-                  0 0 80px rgba(64, 175, 88, 0.3),
-                  0 5px 15px rgba(0, 0, 0, 0.5)
-                `,
                 lineHeight: 1.1,
-                position: 'relative',
-                display: 'inline-block'
               }}
               level={1}
             >
@@ -187,7 +180,7 @@ function Home() {
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 backgroundSize: '200% auto',
-                animation: 'gradientShift 4s ease infinite',
+                animation: 'gradientShift 5s ease infinite',
                 lineHeight: 1.3
               }}
               level={2}
@@ -406,7 +399,6 @@ function Home() {
                     <Card
                       hoverable
                       className="card-custom-modern"
-                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <Flex gap={16} align="center" vertical={false}>
                         {renderIcon(item.iconName, item.name)}
@@ -448,7 +440,6 @@ function Home() {
                     <Card
                       hoverable
                       className="card-custom-modern"
-                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <Flex gap={16} align='center' vertical={false}>
                         {renderIcon(item.iconName, item.name)}
@@ -490,7 +481,6 @@ function Home() {
                     <Card
                       hoverable
                       className="card-custom-modern"
-                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <Flex gap={16} align='center' vertical={false}>
                         {renderIcon(item.iconName, item.name)}

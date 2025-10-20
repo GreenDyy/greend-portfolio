@@ -164,7 +164,6 @@
     backdrop-filter: blur(20px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    animation: cardFadeIn 0.6s ease-out backwards;
 
     // Gradient border effect
     &::before {
@@ -291,18 +290,6 @@
     }
 }
 
-// Fade in animation for cards
-@keyframes cardFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 // Section title modern style
 .ant-typography.title-custom-modern {
@@ -350,7 +337,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        animation: titleShimmer 3s ease infinite;
     }
 
     .title-line {
@@ -366,7 +352,7 @@
 
     &:hover {
         .title-icon-wrapper {
-            transform: rotate(360deg) scale(1.1);
+            transform: rotate(360deg) scale(1.2);
             background: linear-gradient(135deg,
                     rgba(64, 175, 88, 0.5),
                     rgba(64, 175, 88, 0.2));
@@ -375,57 +361,6 @@
                 0 0 30px rgba(64, 175, 88, 0.5),
                 inset 0 0 15px rgba(64, 175, 88, 0.2);
         }
-    }
-}
-
-// Title shimmer animation
-@keyframes titleShimmer {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-// Skills section animation
-.skills-section {
-    animation: sectionFadeIn 0.8s ease-out;
-}
-
-@keyframes sectionFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-// Main section title
-.section-title {
-    animation: titlePulse 2s ease-in-out infinite;
-}
-
-@keyframes titlePulse {
-
-    0%,
-    100% {
-        text-shadow:
-            0 0 40px rgba(64, 175, 88, 0.5),
-            0 0 80px rgba(64, 175, 88, 0.2);
-    }
-
-    50% {
-        text-shadow:
-            0 0 50px rgba(64, 175, 88, 0.7),
-            0 0 100px rgba(64, 175, 88, 0.3);
     }
 }
 
@@ -659,38 +594,6 @@
     }
 }
 
-// Animation for footer social icons
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.footer-social-link:nth-child(1) .footer-social-icon-wrapper {
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 0s;
-}
-
-.footer-social-link:nth-child(2) .footer-social-icon-wrapper {
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 0.2s;
-}
-
-.footer-social-link:nth-child(3) .footer-social-icon-wrapper {
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 0.4s;
-}
-
-.footer-social-link:nth-child(4) .footer-social-icon-wrapper {
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 0.6s;
-}
 
 // Responsive
 @media (max-width: 768px) {
