@@ -367,17 +367,7 @@ function Home() {
               className="section-title"
             >
               Skills & Expertise
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '120px',
-                height: '4px',
-                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
-                borderRadius: '2px',
-                boxShadow: `0 0 15px ${appColors?.GREEND}`
-              }} />
+              <div className="section-title-underline" />
             </Title>
 
             {/* Core Technologies */}
@@ -525,17 +515,7 @@ function Home() {
               className="section-title"
             >
               Education
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '120px',
-                height: '4px',
-                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
-                borderRadius: '2px',
-                boxShadow: `0 0 15px ${appColors?.GREEND}`
-              }} />
+              <div className="section-title-underline" />
             </Title>
 
             <Card
@@ -574,17 +554,7 @@ function Home() {
               className="section-title"
             >
               Languages
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '120px',
-                height: '4px',
-                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
-                borderRadius: '2px',
-                boxShadow: `0 0 15px ${appColors?.GREEND}`
-              }} />
+              <div className="section-title-underline" />
             </Title>
 
             <Row gutter={[24, 24]} justify="center">
@@ -646,17 +616,7 @@ function Home() {
               className="section-title"
             >
               Certifications & Awards
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '120px',
-                height: '4px',
-                background: `linear-gradient(90deg, transparent, ${appColors?.GREEND}, transparent)`,
-                borderRadius: '2px',
-                boxShadow: `0 0 15px ${appColors?.GREEND}`
-              }} />
+              <div className="section-title-underline" />
             </Title>
 
             <Row gutter={[24, 24]} justify="center">

@@ -377,6 +377,19 @@
     gap: 12px;
 }
 
+// Section title underline effect
+.section-title-underline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #40AF58, transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 15px #40AF58;
+}
+
 // ============================================
 // INFO CARD MODERN (Education, Languages, Certifications)
 // ============================================
