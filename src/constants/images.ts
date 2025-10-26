@@ -1,7 +1,4 @@
-// Import tất cả images
-import eldenImage from '../assets/images/elden.jpg';
-import skyImage from '../assets/images/sky.png';
-
+import greendCat from '../assets/images/cat_green.png';
 // Parallax images
 import bgGreen from '../assets/images/parallax/bg_green.jpg';
 import bgGreen1 from '../assets/images/parallax/bg_green1.jpg';
@@ -11,8 +8,7 @@ import blackWallpaper from '../assets/images/black_wallpaper.jpg';
 import giphyLoader from '../assets/images/loader.webp';
 
 export const images = {
-    elden: eldenImage,
-    sky: skyImage,
+    greendCat: greendCat,
     bgGreen: bgGreen,
     bgGreen1: bgGreen1,
     catGreen: catGreen,
