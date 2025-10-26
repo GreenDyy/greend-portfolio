@@ -26,6 +26,7 @@ import { useNavigate } from 'react-router-dom';
 import { PageLoader, PlaySong, Video } from '../../components';
 import { appColors } from '../../constants/appColors';
 import { dLog } from '../../utils/utils';
+import { images } from '../../constants/images';
 const { Title, Text, Link } = Typography;
 
 interface ShowLines {
@@ -723,7 +724,29 @@ function Home() {
         <FloatButton.Group
           trigger="click"
           className='custom-float-btn'
-          icon={<HeartFilled style={{ color: appColors?.GREEND }} />}
+          // icon={<HeartFilled style={{ color: appColors?.GREEND }} />}
+          icon={
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              <img
+                src={images.greendCat}
+                alt="greendCat"
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                }}
+              />
+            </div>
+          }
           closeIcon={<CloseOutlined style={{ color: appColors?.GREEND }} />}
         >
           <FloatButton

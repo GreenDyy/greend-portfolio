@@ -629,7 +629,17 @@
 }
 
 
-// .custom-float-btn .ant-float-btn-body {
-//     background-color: #40AF58 !important;
-//     border-color: #40AF58 !important;
-// }
+.custom-float-btn .ant-float-btn-body {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.custom-float-btn .ant-float-btn-circle {
+    background-color: transparent !important;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-out;
+    }
+}
