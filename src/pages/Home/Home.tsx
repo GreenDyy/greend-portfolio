@@ -26,6 +26,7 @@ import { useNavigate } from 'react-router-dom';
 import { PageLoader, PlaySong, Video } from '../../components';
 import { appColors } from '../../constants/appColors';
 import { dLog } from '../../utils/utils';
+import { Reveal } from '../../components/common/Reveal/Reveal';
 const { Title, Text, Link } = Typography;
 
 interface ShowLines {
@@ -350,25 +351,27 @@ function Home() {
             vertical
             style={{ padding: "40px 20px", width: '100%' }}
           >
-            <Title
-              style={{
-                color: appColors?.GREEND,
-                marginBottom: 60,
-                fontSize: 'clamp(32px, 5vw, 48px)',
-                fontWeight: 900,
-                textAlign: 'center',
-                textShadow: `
-                  0 0 40px rgba(64, 175, 88, 0.5),
-                  0 0 80px rgba(64, 175, 88, 0.2)
-                `,
-                position: 'relative',
-                paddingBottom: 20
-              }}
-              className="section-title"
-            >
-              Skills & Expertise
-              <div className="section-title-underline" />
-            </Title>
+            <Reveal>
+              <Title
+                style={{
+                  color: appColors?.GREEND,
+                  marginBottom: 60,
+                  fontSize: 'clamp(32px, 5vw, 48px)',
+                  fontWeight: 900,
+                  textAlign: 'center',
+                  textShadow: `
+                    0 0 40px rgba(64, 175, 88, 0.5),
+                    0 0 80px rgba(64, 175, 88, 0.2)
+                  `,
+                  position: 'relative',
+                  paddingBottom: 20
+                }}
+                className="section-title"
+              >
+                Skills & Expertise
+                <div className="section-title-underline" />
+              </Title>
+            </Reveal>
 
             {/* Core Technologies */}
             <Flex
@@ -376,13 +379,16 @@ function Home() {
               gap={30}
               className="skills-section"
             >
-              <Title level={2} className='title-custom-modern'>
-                <div className="title-icon-wrapper">
-                  <img src={iconMap.core} className="icon-title" alt="Core Technologies" />
-                </div>
-                <span className="title-text">Core Technologies</span>
-                <div className="title-line" />
-              </Title>
+              <Reveal >
+                <Title level={2} className='title-custom-modern'>
+                  <div className="title-icon-wrapper">
+                    <img src={iconMap.core} className="icon-title" alt="Core Technologies" />
+                  </div>
+                  <span className="title-text">Core Technologies</span>
+                  <div className="title-line" />
+                </Title>
+              </Reveal>
+
               <Row gutter={[24, 24]}>
                 {dataCoreTechs?.map((item, index) => (
                   <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
@@ -417,13 +423,16 @@ function Home() {
               className="skills-section"
               style={{ marginTop: 60 }}
             >
-              <Title level={2} className='title-custom-modern'>
-                <div className="title-icon-wrapper">
-                  <img src={iconMap.database} className="icon-title" alt="Backend & Database" />
-                </div>
-                <span className="title-text">Backend & Database</span>
-                <div className="title-line" />
-              </Title>
+              <Reveal>
+                <Title level={2} className='title-custom-modern'>
+                  <div className="title-icon-wrapper">
+                    <img src={iconMap.database} className="icon-title" alt="Backend & Database" />
+                  </div>
+                  <span className="title-text">Backend & Database</span>
+                  <div className="title-line" />
+                </Title>
+              </Reveal>
+
               <Row gutter={[24, 24]}>
                 {dataBeAndDatabases?.map((item, index) => (
                   <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
@@ -458,13 +467,16 @@ function Home() {
               className="skills-section"
               style={{ marginTop: 60 }}
             >
-              <Title level={2} className='title-custom-modern'>
-                <div className="title-icon-wrapper">
-                  <img src={iconMap.tools} className="icon-title" alt="Tools" />
-                </div>
-                <span className="title-text">Tools</span>
-                <div className="title-line" />
-              </Title>
+              <Reveal>
+                <Title level={2} className='title-custom-modern'>
+                  <div className="title-icon-wrapper">
+                    <img src={iconMap.tools} className="icon-title" alt="Tools" />
+                  </div>
+                  <span className="title-text">Tools</span>
+                  <div className="title-line" />
+                </Title>
+              </Reveal>
+
               <Row gutter={[24, 24]}>
                 {dataTools?.map((item, index) => (
                   <Col xs={24} sm={12} md={8} key={index} style={{ textAlign: 'left' }}>
@@ -498,25 +510,27 @@ function Home() {
             vertical
             style={{ padding: "80px 20px 40px", width: '100%' }}
           >
-            <Title
-              style={{
-                color: appColors?.GREEND,
-                marginBottom: 60,
-                fontSize: 'clamp(32px, 5vw, 48px)',
-                fontWeight: 900,
-                textAlign: 'center',
-                textShadow: `
-                  0 0 40px rgba(64, 175, 88, 0.5),
-                  0 0 80px rgba(64, 175, 88, 0.2)
-                `,
-                position: 'relative',
-                paddingBottom: 20
-              }}
-              className="section-title"
-            >
-              Education
-              <div className="section-title-underline" />
-            </Title>
+            <Reveal>
+              <Title
+                style={{
+                  color: appColors?.GREEND,
+                  marginBottom: 60,
+                  fontSize: 'clamp(32px, 5vw, 48px)',
+                  fontWeight: 900,
+                  textAlign: 'center',
+                  textShadow: `
+                    0 0 40px rgba(64, 175, 88, 0.5),
+                    0 0 80px rgba(64, 175, 88, 0.2)
+                  `,
+                  position: 'relative',
+                  paddingBottom: 20
+                }}
+                className="section-title"
+              >
+                Education
+                <div className="section-title-underline" />
+              </Title>
+            </Reveal>
 
             <Card
               hoverable
@@ -537,25 +551,27 @@ function Home() {
             vertical
             style={{ padding: "40px 20px", width: '100%' }}
           >
-            <Title
-              style={{
-                color: appColors?.GREEND,
-                marginBottom: 60,
-                fontSize: 'clamp(32px, 5vw, 48px)',
-                fontWeight: 900,
-                textAlign: 'center',
-                textShadow: `
-                  0 0 40px rgba(64, 175, 88, 0.5),
-                  0 0 80px rgba(64, 175, 88, 0.2)
-                `,
-                position: 'relative',
-                paddingBottom: 20
-              }}
-              className="section-title"
-            >
-              Languages
-              <div className="section-title-underline" />
-            </Title>
+            <Reveal>
+              <Title
+                style={{
+                  color: appColors?.GREEND,
+                  marginBottom: 60,
+                  fontSize: 'clamp(32px, 5vw, 48px)',
+                  fontWeight: 900,
+                  textAlign: 'center',
+                  textShadow: `
+                    0 0 40px rgba(64, 175, 88, 0.5),
+                    0 0 80px rgba(64, 175, 88, 0.2)
+                  `,
+                  position: 'relative',
+                  paddingBottom: 20
+                }}
+                className="section-title"
+              >
+                Languages
+                <div className="section-title-underline" />
+              </Title>
+            </Reveal>
 
             <Row gutter={[24, 24]} justify="center">
               <Col xs={24} sm={12} style={{ display: 'flex' }}>
@@ -599,25 +615,27 @@ function Home() {
             vertical
             style={{ padding: "40px 20px", width: '100%' }}
           >
-            <Title
-              style={{
-                color: appColors?.GREEND,
-                marginBottom: 60,
-                fontSize: 'clamp(32px, 5vw, 48px)',
-                fontWeight: 900,
-                textAlign: 'center',
-                textShadow: `
-                  0 0 40px rgba(64, 175, 88, 0.5),
-                  0 0 80px rgba(64, 175, 88, 0.2)
-                `,
-                position: 'relative',
-                paddingBottom: 20
-              }}
-              className="section-title"
-            >
-              Certifications & Awards
-              <div className="section-title-underline" />
-            </Title>
+            <Reveal>
+              <Title
+                style={{
+                  color: appColors?.GREEND,
+                  marginBottom: 60,
+                  fontSize: 'clamp(32px, 5vw, 48px)',
+                  fontWeight: 900,
+                  textAlign: 'center',
+                  textShadow: `
+                    0 0 40px rgba(64, 175, 88, 0.5),
+                    0 0 80px rgba(64, 175, 88, 0.2)
+                  `,
+                  position: 'relative',
+                  paddingBottom: 20
+                }}
+                className="section-title"
+              >
+                Certifications & Awards
+                <div className="section-title-underline" />
+              </Title>
+            </Reveal>
 
             <Row gutter={[24, 24]} justify="center">
               <Col xs={24} sm={12} style={{ display: 'flex' }}>
@@ -715,7 +733,7 @@ function Home() {
               marginTop: 32,
               textAlign: 'center'
             }}>
-              Made with 💚 by GreenD
+              Made with 💚 by GreenD © 2025
             </Text>
           </Flex>
         </Flex>
@@ -777,4 +795,3 @@ function Home() {
 }
 
 export default Home;
-
